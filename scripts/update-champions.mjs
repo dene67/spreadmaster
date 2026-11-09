@@ -1,0 +1,11 @@
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+const response=await fetch('https://raw.githubusercontent.com/tinoxo/PokeCalc/main/data/champions-legality.json');
+if(!response.ok)throw Error('Could not read roster: '+response.status);
+const legality=await response.json();
+const dex=JSON.parse(await readFile('public/data/pokedex.json','utf8'));
+const species=legality.legalSpecies.map(id=>{const p=dex[id];if(!p)throw Error('Missing dex entry: '+id);return {...p,id};});
+const metadata={game:'Pokémon Champions',regulation:legality.regulation,window:legality.window,checkedAt:'2026-11-04',source:'https://raw.githubusercontent.com/tinoxo/PokeCalc/main/data/champions-legality.json',rosterSource:'https://www.serebii.net/pokemonchampions/pokemon.shtml',officialSource:'https://www.pokemon.com/us/news/get-ready-for-regulation-set-m-c-in-pokemon-champions',statSource:'https://bulbapedia.bulbagarden.net/wiki/Stat_point',maxSP:32,totalSP:66,level:50};
+const items=legality.legalItems;
+await mkdir('public/data',{recursive:true});
+await writeFile('public/data/champions.js','globalThis.CHAMPIONS_DATA='+JSON.stringify({metadata,species,items})+';');
+console.log(`${species.length} legal M-C forms in Champions snapshot`);
