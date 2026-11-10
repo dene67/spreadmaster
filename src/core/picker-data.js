@@ -1,3 +1,4 @@
+import {pokemonFacts} from './search.js';
 // Canonical option datasets for the spread editors. Every picker uses the
 // same roster, learnset, and nature sources; callers may still narrow moves
 // for a specific job such as choosing a damaging attack.
@@ -8,6 +9,7 @@ export function pokemonOptions(ctx) {
     subtitle: p.types.join(' / '),
     search: [p.name, ...p.types, ...Object.values(p.abilities||{}),
       ...(ctx.learnsets[p.id]||[]).map(id=>ctx.gen.moves.get(id)?.name||id)].join(' '),
+    facts:pokemonFacts(ctx,p),
     pokemon: p
   }));
 }

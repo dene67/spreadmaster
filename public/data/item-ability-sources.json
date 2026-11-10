@@ -1,0 +1,16 @@
+{
+  "retrieved": "2026-11-09",
+  "license": "MIT; see LICENSE-showdown.txt",
+  "sources": [
+    "https://github.com/smogon/pokemon-showdown/blob/master/data/text/items.ts",
+    "https://github.com/smogon/pokemon-showdown/blob/master/data/items.ts",
+    "https://github.com/smogon/pokemon-showdown/blob/master/data/mods/champions/items.ts",
+    "https://github.com/smogon/pokemon-showdown/blob/master/data/text/abilities.ts",
+    "https://github.com/smogon/pokemon-showdown/blob/master/data/abilities.ts",
+    "https://github.com/smogon/pokemon-showdown/blob/master/data/mods/champions/abilities.ts"
+  ],
+  "coverage": {
+    "items": 166,
+    "abilities": 215
+  }
+}

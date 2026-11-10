@@ -1,0 +1,17 @@
+[
+  {
+    "id": "m-a",
+    "name": "Champions Regulation M-A",
+    "path": "./public/data/regulations/ma.json"
+  },
+  {
+    "id": "m-b",
+    "name": "Champions Regulation M-B",
+    "path": "./public/data/regulations/mb.json"
+  },
+  {
+    "id": "m-c",
+    "name": "Champions Regulation M-C",
+    "path": "./public/data/regulations/mc.json"
+  }
+]

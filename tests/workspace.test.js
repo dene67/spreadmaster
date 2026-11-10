@@ -1,0 +1,7 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {validateWorkspace} from '../src/core/workspace.js';
+const fixture=()=>({sets:[{id:'set-1',name:'Volcarona',species:'Volcarona',level:50,nature:'Timid',ability:'Flame Body',item:'Sitrus Berry',moves:['Protect'],points:{hp:2,atk:0,def:0,spa:32,spd:0,spe:32}}],teams:[{id:'team-1',name:'Team',members:['set-1'],regulationId:'m-c',folderId:'folder-1'}],teamFolders:[{id:'folder-1',name:'Tournament'}]});
+test('workspace backups retain folders and team target regulations',()=>{const source=fixture();assert.deepEqual(validateWorkspace(JSON.parse(JSON.stringify(source))),source);});
+test('older workspace backups without folders remain importable',()=>{const source=fixture();delete source.teamFolders;delete source.teams[0].folderId;const restored=validateWorkspace(source);assert.deepEqual(restored.teamFolders,[]);assert.equal(restored.teams[0].regulationId,'m-c');});
+test('workspace imports reject missing folders, duplicate IDs and invalid set stats',()=>{const missing=fixture();missing.teams[0].folderId='unknown';assert.throws(()=>validateWorkspace(missing),/missing folder/);const duplicate=fixture();duplicate.teamFolders.push({...duplicate.teamFolders[0]});assert.throws(()=>validateWorkspace(duplicate),/folder/);const invalid=fixture();invalid.sets[0].points.spe=33;assert.throws(()=>validateWorkspace(invalid),/0–32/);});

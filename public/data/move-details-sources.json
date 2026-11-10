@@ -1,0 +1,10 @@
+{
+  "retrieved": "2026-11-09",
+  "license": "MIT (see LICENSE-showdown.txt)",
+  "sources": [
+    "https://github.com/smogon/pokemon-showdown/blob/master/data/moves.ts",
+    "https://github.com/smogon/pokemon-showdown/blob/master/data/text/moves.ts",
+    "https://github.com/smogon/pokemon-showdown/blob/master/data/mods/champions/moves.ts"
+  ],
+  "entries": 954
+}

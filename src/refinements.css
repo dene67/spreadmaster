@@ -33,3 +33,13 @@
 .chart-legend span:nth-child(3){color:#fff!important}.calc-stat-row{grid-template-columns:76px minmax(80px,1fr) minmax(70px,.8fr) 34px!important}.calc-stat-row>label{display:flex;flex-direction:column;align-items:flex-start;gap:2px;white-space:nowrap}.calc-stat-row>label .nature-stat-label{display:block;color:#fff!important;font-size:8px;font-weight:500;line-height:1.1}.chart-nature{background:#fff!important}@media(max-width:600px){.calc-stat-row{grid-template-columns:61px minmax(65px,1fr) minmax(45px,.7fr) 30px!important;gap:4px!important}.calc-stat-row>label .nature-stat-label{font-size:7px}}
 html body .calc-spread .chart-legend span:nth-child(3){color:#fff!important}.calc-stat-row>label{display:block}.nature-stat-label{display:none!important}.survival-rolls{padding:15px;margin:14px 0;display:grid;gap:8px}.survival-rolls>div{font-size:10px;line-height:1.8;color:var(--text);overflow-wrap:anywhere}.survival-rolls span{font-size:10px;color:var(--muted)}.survival-advice{padding:15px;margin:14px 0;display:grid;gap:7px}.survival-advice>span{font-size:13px;color:var(--orange);font-weight:650}.survival-advice small{font-size:10px;color:var(--muted);line-height:1.6}
 .roster-result-search{display:block;max-width:520px;margin:18px 0 8px}.roster-result-search input{margin-top:6px}.roster-damage-card .optimal-ko{color:var(--orange);font-weight:600}.roster-damage-card .average-ko{color:var(--muted)}
+
+/* Moveset damage comparison and permanently visible rolls. */
+.moveset-damage + .moveset-damage{border-top:1px solid var(--line);margin-top:24px;padding-top:22px}
+.moveset-damage .panel-label{display:flex;align-items:center;gap:8px;flex-wrap:wrap;line-height:1.6}
+.damage-compact-range{font-size:22px;font-weight:700;color:var(--orange);display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.damage-compact-range small{font-size:11px;font-weight:400;color:var(--muted,#a0a7b3)}
+.damage-rolls{margin-top:16px}.damage-rolls>b{display:block;font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted,#a0a7b3);margin-bottom:9px}
+.damage-rolls>div{display:flex;flex-wrap:wrap;gap:5px}.damage-roll{font-size:11px;font-variant-numeric:tabular-nums;padding:5px 7px;border-radius:5px;border:1px solid var(--line);background:var(--panel,#202329)}
+.damage-roll.roll-ko{color:var(--orange);border-color:var(--accent-line);background:var(--accent-soft);font-weight:750}
+.damage-output{overflow-anchor:none}html{scroll-behavior:auto}

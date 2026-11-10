@@ -1,0 +1,7 @@
+export function koChance(hit){const hp=hit.hp,rolls=hit.rolls;if(typeof rolls==='number')return rolls>=hp?1:0;if(!Array.isArray(rolls))return hit.lo>=hp?1:hit.hi>=hp?0.5:0;if(rolls.every(x=>typeof x==='number'))return rolls.filter(x=>x>=hp).length/rolls.length;let distribution=new Map([[0,1]]);for(const hitRolls of rolls){if(!Array.isArray(hitRolls)||!hitRolls.length)continue;const next=new Map();for(const [sum,p]of distribution)for(const damage of hitRolls){const value=sum+damage;next.set(value,(next.get(value)||0)+p/hitRolls.length);}distribution=next;}let chance=0;for(const [damage,p]of distribution)if(damage>=hp)chance+=p;return chance;}
+export function hitStatus(h){return h.lo>=h.hp?{kind:'guaranteed',label:'Guaranteed OHKO'}:h.hi>=h.hp?{kind:'possible',label:'Possible OHKO'}:{kind:'survives',label:'Survives every roll'};}
+
+export function attackBenchmarkGroup(uninvested,maximumBulk){return maximumBulk.lo>=maximumBulk.hp?0:maximumBulk.hi>=maximumBulk.hp?1:uninvested.hi>=uninvested.hp?2:3;}
+
+export function defenseBenchmarkGroup(minimumOffense,maximumOffense){return minimumOffense.lo>=minimumOffense.hp?0:minimumOffense.hi>=minimumOffense.hp?1:maximumOffense.hi>=maximumOffense.hp?2:3;}
+export function relevantBenchmark(row,side,index){let key;if(side==='attack')key=index<2?'bulkHit':index===3?'hit':['hit','neutralHit','bulkHit'].find(key=>row[key]&&row[key].hi<row[key].hp)||'bulkHit';else key=index<2?'zeroHit':index===3?'hit':['hit','neutralHit','zeroHit'].find(key=>row[key]&&row[key].hi<row[key].hp)||'zeroHit';return {key,hit:row[key]||row.hit};}
